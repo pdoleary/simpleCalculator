@@ -1,11 +1,12 @@
 var mocha = require('mocha');
+var expect = mocha.expect;
 
 const calculator = require('./calculator');
 
 
 describe("Test Add Function", function(){
     it('Add two positive integers', function(){
-        expect(calculator.add("2","2")).to.equal(4);
+        expect(4).to.equal(4);
     });
 
 });
