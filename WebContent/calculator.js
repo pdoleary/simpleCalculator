@@ -1,9 +1,13 @@
-CalculatorClass = function () {
+CalculatorClass = function() {
   function calculate(expression) {
+    return Math.round(calculateRecursive(expression), 2);
+  }
+
+  function calculateRecursive(expression) {
     var expression = expression.replace(/\s/g, '');
 
     checkCorrectNumberOfBrackets(expression);
-    // expression = resolveBrackets(expression, 0);
+    expression = resolveBrackets(expression, 0);
 
     expression = resolveOperation(expression, '/');
     expression = resolveOperation(expression, '*');
@@ -25,7 +29,8 @@ CalculatorClass = function () {
     var expressionBetweenBrackets = expression.substring(firstLeftBracket + 1,
             matchingRightBracket);
     var resultOfBrackets = calculate(expressionBetweenBrackets);
-    var expressionAfterCalculation = expression.replace('(' + expressionBetweenBrackets + ')', result);
+    var expressionAfterCalculation = expression.replace('('
+            + expressionBetweenBrackets + ')', result);
     return resolveBrackets(expressionAfterCalculation);
   }
 
@@ -94,21 +99,25 @@ CalculatorClass = function () {
     return result;
   }
 
-    return {
-        add: doAdd
-    };
+  return {
+    add: add,
+    subtract; subtract,
+    calculate: calculate,
+    multiply: multiply,
+    divide: divide
+  };
 };
 // A singleton calculator
-Calculator = function () {
-    var calculator;
-    if (calculator == null) {
-        console.log("constructing new instance of MyCalc");
-        calculator = new CalculatorClass();
-    }
-    return calculator;
+Calculator = function() {
+  var calculator;
+  if (calculator == null) {
+    console.log("constructing new instance of MyCalc");
+    calculator = new CalculatorClass();
+  }
+  return calculator;
 };
 
 // Export the singleton calculator
-module.exports = {   
-    Calculator: calc = Calculator()
+module.exports = {
+  Calculator: calc = Calculator()
 }
