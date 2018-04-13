@@ -2,11 +2,13 @@ var chai = require('chai');
 var mocha = require('mocha');
 var assert = chai.assert;
 
-const calculator = require('./calculator');
+const myModule = require('./calculator');
+
+//const calculator = myModule.Calculator()
 
 describe('Chai tests for calculator add function', function(){
     it('Add test two positive integers', function(){
-        assert.equal(calculator.add("5", "5"), 10);
+        assert.equal(myModule.calculator.add("5", "5"), 10);
     });
 
     it('Add test with two positive floats', function(){
