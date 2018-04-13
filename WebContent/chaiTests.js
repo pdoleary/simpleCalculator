@@ -2,7 +2,7 @@ var chai = require('chai')
 var assert = chai.assert;
 const calculator = require('./calculator');
 
-describle('Chai tests for calculator add function', function(){
+describe('Chai tests for calculator add function', function(){
     it('Add test two positive integers', function(){
         assert.equal(calculator.add(5, 5), 10);
     });
@@ -28,7 +28,7 @@ describle('Chai tests for calculator add function', function(){
     });
 });
 
-describle('Chai tests for calculator subtract function', function(){
+describe('Chai tests for calculator subtract function', function(){
     it('Subtract test two positive integers', function(){
         assert.equal(calculator.subtract(14, 5), 9);
     });
@@ -54,8 +54,11 @@ describle('Chai tests for calculator subtract function', function(){
     });
 });
 
-describle('Chai tests for calculator "calculate" function', function(){
-    it('Calculate test two positive integers', function(){
+
+describe('Chai tests for calculator "calculate" function', function(){
+    it('Calculate test positive integers only', function(){
         assert.equal(calculator.calculate("(3+3)*(3+3)"), 36);
     });
+
+
 });
