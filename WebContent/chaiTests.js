@@ -8,7 +8,7 @@ const myModule = require('./calculator');
 
 describe('Chai tests for calculator add function', function(){
     it('Add test two positive integers', function(){
-        assert.equal(myModule.calculator.add("5", "5"), 10);
+        assert.equal(myModule.Calculator.add("5", "5"), 10);
     });
 
     it('Add test with two positive floats', function(){
