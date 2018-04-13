@@ -1,16 +1,32 @@
-var Calculator = function() {
+CalculatorClass = function () {
   function calculate(expression) {
     var expression = expression.replace(/\s/g, '');
 
-    // checkCorrectNumberOfBrackets(expression);
-    // var bracketsTerm = findBracketTerm(expression, startIndex);
+    checkCorrectNumberOfBrackets(expression);
+    // expression = resolveBrackets(expression, 0);
 
     expression = resolveOperation(expression, '/');
     expression = resolveOperation(expression, '*');
     expression = resolveOperation(expression, '+');
     expression = resolveOperation(expression, '-');
-    alert(expression);
     return parseFloat(expression);
+  }
+
+  function checkCorrectNumberOfBrackets(expression) {
+    if (!expression.includes('(')) { return true }
+
+    if ((expression.match(/\(/g) || []).length != (expression.match(/)/g) || []).length) { throw "Invalid syntax, unequal number of left and right brackets"; }
+  }
+
+  function resolveBrackets(expression, startIndex) {
+    if (!expression.includes('(')) { return expression; }
+    var firstLeftBracket = expression.indexOf('(');
+    var firstRightBracket = expression.indexOf(')');
+    var expressionBetweenBrackets = expression.substring(firstLeftBracket + 1,
+            matchingRightBracket);
+    var resultOfBrackets = calculate(expressionBetweenBrackets);
+    var expressionAfterCalculation = expression.replace('(' + expressionBetweenBrackets + ')', result);
+    return resolveBrackets(expressionAfterCalculation);
   }
 
   function resolveOperation(expression, operation) {
@@ -57,18 +73,6 @@ var Calculator = function() {
       throw 'Undefined operation';
     }
   }
-  // TODO doesn't work with nested brackets
-  function findBracketTerm(expression, startIndex) {
-    var firstLeftBracket = expression.indexOf('(');
-    var firstRightBracket = expression.indexOf(')');
-    var result = expression.substring(firstLeftBracket + 1,
-            matchingRightBracket);
-    return result;
-  }
-
-  function checkCorrectNumberOfBrackets(expression) {
-    if ((expression.match(/\(/g) || []).length != (expression.match(/)/g) || []).length) { throw "Invalid syntax, unequal number of left and right brackets"; }
-  }
 
   function add(num1, num2) {
     var result = parseFloat(num1) + parseFloat(num2);
@@ -90,11 +94,21 @@ var Calculator = function() {
     return result;
   }
 
-  return {
-    calculate: calculate,
-    add: add,
-    subtract: subtract,
-    divide: divide,
-    multiple: multiply
-  }
+    return {
+        add: doAdd
+    };
 };
+// A singleton calculator
+Calculator = function () {
+    var calculator;
+    if (calculator == null) {
+        console.log("constructing new instance of MyCalc");
+        calculator = new CalculatorClass();
+    }
+    return calculator;
+};
+
+// Export the singleton calculator
+module.exports = {   
+    Calculator: calc = Calculator()
+}
