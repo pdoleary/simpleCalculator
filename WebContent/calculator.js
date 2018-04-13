@@ -1,16 +1,46 @@
-var Calculator = function() {
+var calcuator;
+Calculator = function(){
+  if (calcuator == null){
+    calculator = new CalculatorClass();
+  }
+  return calcuator;
+}
+
+var CalculatorClass = function() {
   function calculate(expression) {
     var expression = expression.replace(/\s/g, '');
 
-    // checkCorrectNumberOfBrackets(expression);
-    // var bracketsTerm = findBracketTerm(expression, startIndex);
+    checkCorrectNumberOfBrackets(expression);
+    // expression = resolveBrackets(expression, 0);
 
     expression = resolveOperation(expression, '/');
     expression = resolveOperation(expression, '*');
     expression = resolveOperation(expression, '+');
     expression = resolveOperation(expression, '-');
-    alert(expression);
     return parseFloat(expression);
+  }
+
+  function checkCorrectNumberOfBrackets(expression) {
+    if (!expression.includes('(')) { return true }
+
+    if ((expression.match(/\(/g) || []).length != (expression.match(/)/g) || []).length) { throw "Invalid syntax, unequal number of left and right brackets"; }
+  }
+
+  function resolveBrackets(expression, startIndex) {
+    if (!expression.includes('(')) { return expression; }
+    var firstLeftBracket = expression.indexOf('(');
+    var firstRightBracket = expression.indexOf(')');
+    var stringBetweenBrackets = expression.substring(firstLeftBracket + 1,
+            matchingRightBracket);
+    var resultOfBrackets = calculate(bracketsTerm);
+    var expressionAfterCalculation = expression.replace(firstNum + operation
+            + secondNum, result);
+  }
+
+  // TODO doesn't work with nested brackets
+  function findBracketTerm(expression, startIndex) {
+
+    return result;
   }
 
   function resolveOperation(expression, operation) {
@@ -57,18 +87,6 @@ var Calculator = function() {
       throw 'Undefined operation';
     }
   }
-  // TODO doesn't work with nested brackets
-  function findBracketTerm(expression, startIndex) {
-    var firstLeftBracket = expression.indexOf('(');
-    var firstRightBracket = expression.indexOf(')');
-    var result = expression.substring(firstLeftBracket + 1,
-            matchingRightBracket);
-    return result;
-  }
-
-  function checkCorrectNumberOfBrackets(expression) {
-    if ((expression.match(/\(/g) || []).length != (expression.match(/)/g) || []).length) { throw "Invalid syntax, unequal number of left and right brackets"; }
-  }
 
   function add(num1, num2) {
     var result = parseFloat(num1) + parseFloat(num2);
@@ -98,3 +116,7 @@ var Calculator = function() {
     multiple: multiply
   }
 };
+
+module.exports = {
+  Calculator: calculator;
+}
