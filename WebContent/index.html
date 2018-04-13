@@ -4,35 +4,106 @@
         <title>Calculator</title>
         <link href="Styles/calculator.css")" rel="stylesheet" />
         <script src="calculator.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
     </head>
     <body>
+    	<script>
+    	$(function() {
+        	var clear = true;
+    		$("#equals").click(function(){
+        		if(clear === false){
+            		clear = true;
+            	};
+            	$("#1").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '1';
+            			clear = false;
+                    }					
+            	});
+            	$("#2").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '2';
+            			clear = false;
+                    }					
+            	});
+            	$("#3").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '3';
+            			clear = false;
+                    }					
+            	});
+            	$("#4").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '4';
+            			clear = false;
+                    }					
+            	});
+            	$("#5").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '5';
+            			clear = false;
+                    }					
+            	});
+            	$("#6").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '6';
+            			clear = false;
+                    }					
+            	});
+            	$("#7").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '7';
+            			clear = false;
+                    }					
+            	});
+            	$("#8").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '8';
+            			clear = false;
+                    }					
+            	});
+            	$("#9").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '9';
+            			clear = false;
+                    }					
+            	});
+        		$("input").click(function(){
+            		if(clear === true){
+            			calculator.answer.value = '';
+            			clear = false;
+                    }					
+            	});
+    		});
+		});
+		</script>
         <div id='calc-contain'>
   
           <form name="calculator">            
             <input type="text" name="answer" />
             <br>
             
-            <input type="button" value=" 1 " onclick="calculator.answer.value += '1'" />
-            <input type="button" value=" 2 " onclick="calculator.answer.value += '2'" />
-            <input type="button" value=" 3 " onclick="calculator.answer.value += '3'" />
+            <input id="1" type="button" value=" 1 " onclick="calculator.answer.value += '1'" />
+            <input id="2" type="button" value=" 2 " onclick="calculator.answer.value += '2'" />
+            <input id="3" type="button" value=" 3 " onclick="calculator.answer.value += '3'" />
             <input type="button" value=" + " onclick="calculator.answer.value += '+'" />
             <br/>
             
-            <input type="button" value=" 4 " onclick="calculator.answer.value += '4'" />
-            <input type="button" value=" 5 " onclick="calculator.answer.value += '5'" />
-            <input type="button" value=" 6 " onclick="calculator.answer.value += '6'" />
+            <input id="4" type="button" value=" 4 " onclick="calculator.answer.value += '4'" />
+            <input id="5" type="button" value=" 5 " onclick="calculator.answer.value += '5'" />
+            <input id="6" type="button" value=" 6 " onclick="calculator.answer.value += '6'" />
             <input type="button" value=" - " onclick="calculator.answer.value += '-'" />
             </br>
           
-            <input type="button" value=" 7 " onclick="calculator.answer.value += '7'" />
-            <input type="button" value=" 8 " onclick="calculator.answer.value += '8'" />
-            <input type="button" value=" 9 " onclick="calculator.answer.value += '9'" />
+            <input id="7" type="button" value=" 7 " onclick="calculator.answer.value += '7'" />
+            <input id="8" type="button" value=" 8 " onclick="calculator.answer.value += '8'" />
+            <input id="9" type="button" value=" 9 " onclick="calculator.answer.value += '9'" />
             <input type="button" value=" x " onclick="calculator.answer.value += '*'" />
             </br>
         
             <input type="button" value=" c " onclick="calculator.answer.value = ''" />
             <input type="button" value=" 0 " onclick="calculator.answer.value += '0'" />
-            <input type="button" value=" = " onclick="calculator.answer.value = Calculator().calculate(calculator.answer.value)" />
+            <input id="equals" type="button" value=" = " onclick="calculator.answer.value = Calculator().calculate(calculator.answer.value)" />
             <input type="button" value=" / " onclick="calculator.answer.value += '/'" />
             </br>    
           </form>
