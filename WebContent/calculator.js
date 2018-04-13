@@ -1,12 +1,4 @@
-var calcuator;
-Calculator = function(){
-  if (calcuator == null){
-    calculator = new CalculatorClass();
-  }
-  return calcuator;
-}
-
-var CalculatorClass = function() {
+CalculatorClass = function () {
   function calculate(expression) {
     var expression = expression.replace(/\s/g, '');
 
@@ -30,17 +22,11 @@ var CalculatorClass = function() {
     if (!expression.includes('(')) { return expression; }
     var firstLeftBracket = expression.indexOf('(');
     var firstRightBracket = expression.indexOf(')');
-    var stringBetweenBrackets = expression.substring(firstLeftBracket + 1,
+    var expressionBetweenBrackets = expression.substring(firstLeftBracket + 1,
             matchingRightBracket);
-    var resultOfBrackets = calculate(bracketsTerm);
-    var expressionAfterCalculation = expression.replace(firstNum + operation
-            + secondNum, result);
-  }
-
-  // TODO doesn't work with nested brackets
-  function findBracketTerm(expression, startIndex) {
-
-    return result;
+    var resultOfBrackets = calculate(expressionBetweenBrackets);
+    var expressionAfterCalculation = expression.replace('(' + expressionBetweenBrackets + ')', result);
+    return resolveBrackets(expressionAfterCalculation);
   }
 
   function resolveOperation(expression, operation) {
@@ -108,15 +94,21 @@ var CalculatorClass = function() {
     return result;
   }
 
-  return {
-    calculate: calculate,
-    add: add,
-    subtract: subtract,
-    divide: divide,
-    multiple: multiply
-  }
+    return {
+        add: doAdd
+    };
+};
+// A singleton calculator
+Calculator = function () {
+    var calculator;
+    if (calculator == null) {
+        console.log("constructing new instance of MyCalc");
+        calculator = new CalculatorClass();
+    }
+    return calculator;
 };
 
-module.exports = {
-  Calculator: calculator;
+// Export the singleton calculator
+module.exports = {   
+    Calculator: calc = Calculator()
 }
