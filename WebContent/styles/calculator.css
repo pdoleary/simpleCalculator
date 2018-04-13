@@ -5,6 +5,8 @@
   border-radius: 12px;
   margin: 0px auto;
   padding: 20px 20px 100px 20px;
+  background-color:lightgrey;
+  box-shadow: 5px 5px;
 }
 #agh{
   position: relative;
@@ -16,13 +18,14 @@
   font-weight: 900;
 }
 input[type=button] {
-  background: lightGray;
+  background: darkgrey;
   width: 20%;
   font-size: 20px;
   font-weight: 900;
   border-radius: 7px;
   margin-left: 13px;
   margin-top: 10px;
+  box-shadow: 2px 2px;
 }
 input[type=button]:active {
   background-color: #3e8e41;
@@ -42,4 +45,5 @@ input[type = text] {
   font-size: 20px;
   padding: 10px;
   box-shadow: 4px 0px 12px black inset;
+  text-align:right;
 }
