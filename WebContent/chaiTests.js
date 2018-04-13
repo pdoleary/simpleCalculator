@@ -56,12 +56,21 @@ describe('Chai tests for calculator subtract function', function(){
     });
 });
 
-//Multiply and divide tests
+describe('Chai tests for calculator multiply function', function(){
+    it('Multiply test positive integers only', function(){
+        assert.equal(calculator.divide(7, 7), 49);
+    });
+});
+
+describe('Chai tests for calculator divide function', function(){
+    it('Divide test positive integers only', function(){
+        assert.equal(calculator.multiply(10, 5), 50);
+    });
+});
+
 
 describe('Chai tests for calculator "calculate" function', function(){
     it('Calculate test positive integers only', function(){
         assert.equal(calculator.calculate("(3+3)*(3+3)"), 36);
     });
-
-
 });
