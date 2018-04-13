@@ -46,15 +46,15 @@ describe('Chai tests for calculator subtract function', function(){
     });
 
     it('Subtract test with two negative floats', function(){
-        assert.equal(myModule.Calculator.subtract("-3.3", "-2.8"), -6.1);
+        assert.equal(myModule.Calculator.subtract("-3.3", "-2.8"), -0.5);
     });
 
     it('Subtract test with large positive integers', function(){
-        assert.equal(myModule.Calculator.subtract("2343252352456", "5624563574562"), 0);
+        assert.equal(myModule.Calculator.subtract("2343252352456", "5624563574562"), -3281311222106);
     });
 
     it('Subtract test with large negative integers', function(){
-        assert.equal(myModule.Calculator.subtract("-3469876224741", "-4472840987234"), 0);
+        assert.equal(myModule.Calculator.subtract("-3469876224741", "-4472840987234"), 1002964762493);
     });
 });
 
