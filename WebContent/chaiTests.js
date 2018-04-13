@@ -26,7 +26,7 @@ describle('Chai tests for calculator add function', function(){
     it('Add test with large negative integers', function(){
         assert.equal(calculator.add(-3469876224741, -4472840987234), -7942717211975);
     });
-})
+});
 
 describle('Chai tests for calculator subtract function', function(){
     it('Subtract test two positive integers', function(){
@@ -52,4 +52,10 @@ describle('Chai tests for calculator subtract function', function(){
     it('Subtract test with large negative integers', function(){
         assert.equal(calculator.subtract(-3469876224741, -4472840987234), 0);
     });
-})
+});
+
+describle('Chai tests for calculator "calculate" function', function(){
+    it('Calculate test two positive integers', function(){
+        assert.equal(calculator.calculate("(3+3)*(3+3)"), 36);
+    });
+});
