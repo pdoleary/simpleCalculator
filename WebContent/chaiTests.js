@@ -1,6 +1,6 @@
 var chai = require('chai')
 var assert = chai.assert;
-const calculator = require('');
+const calculator = require('./calculator');
 
 describle('Chai tests for calculator add function', function(){
     it('Add test two positive integers', function(){
