@@ -1,5 +1,7 @@
-var chai = require('chai')
+var chai = require('chai');
+var mocha = require('mocha');
 var assert = chai.assert;
+
 const calculator = require('./calculator');
 
 describe('Chai tests for calculator add function', function(){
@@ -54,6 +56,7 @@ describe('Chai tests for calculator subtract function', function(){
     });
 });
 
+//Multiply and divide tests
 
 describe('Chai tests for calculator "calculate" function', function(){
     it('Calculate test positive integers only', function(){
