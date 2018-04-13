@@ -6,13 +6,12 @@ function calculate(expressionWithSpaces) {
   return 0;
 }
 
-function findBracketTerm(expression, startIndex){
+function findBracketTerm(expression, startIndex) {
   return '';
 }
 
-
 function checkCorrectNumberOfBrackets(expression) {
-  if ((expression.match(/(/g) || []).length != (expression.match(/)/g) || []).length) { throw "Invalid syntax, unequal number of left and right brackets"; }
+  if ((expression.match(/\(/g) || []).length != (expression.match(/)/g) || []).length) { throw "Invalid syntax, unequal number of left and right brackets"; }
 }
 
 function add(num1, num2) {
